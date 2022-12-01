@@ -4,17 +4,15 @@ using namespace std;
 
 //UC4 : Solved using switch case
 
-void empWageCal(int* empHrs, int* EMP_WAGE_PER_HOUR){
-		int empWage;
-	    empWage = ((*empHrs) * (*EMP_WAGE_PER_HOUR));
-	    cout<<"Emp Hours : "<<*empHrs<<endl;
-	    cout<<"Emp Wage : "<<empWage<<endl;
-}
 void empWage(){        
-	int empHrs, empWage;
+	int empHrs = 0, empWagePerDay = 0;
+    int WORKING_DAYS_PER_MONTH  = 20;
+    int EMP_WAGE_PER_HOUR = 20;
+    int empWagePerMonth = 0;
+
+    for(int day = 0 ; day <= WORKING_DAYS_PER_MONTH ; day++) {
     srand(time(0));
     int random = rand() % 3;
-	int EMP_WAGE_PER_HOUR = 20;
 	switch(random) {
 	    case 1:
 	        cout<<"Employee is Doing Full Time:"<<endl;
@@ -28,8 +26,14 @@ void empWage(){
 	        cout<<"Employee is Absent:"<<endl;
 	        empHrs = 0;
 	            break;
-	}
-	empWageCal(&empHrs, &EMP_WAGE_PER_HOUR);
+	    }
+	    empWagePerDay = empHrs * EMP_WAGE_PER_HOUR;
+        empWagePerMonth = empWagePerDay + empWagePerMonth;
+	    cout<<"Emp Hours : "<<empHrs<<endl;
+	    cout<<"Emp Wage : "<<empWagePerDay<<endl;
+        cout<<"*********************************"<<endl;
+    }
+	cout<<"Employee wage per month : "<<empWagePerMonth;
 }
 
 int main()
